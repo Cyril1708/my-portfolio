@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Its Cyril - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero" data-aos="fade-up">
+        <div class="hero-content">
+            <h1><span id="typed"></span></h1>
+            <p>Aspiring Web Developer</p>
+            <a href="#contact" class="cta-button">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" data-aos="fade-right">
+        <h2>About Me</h2>
+        <p>I'm passionate about coding and learning web technologies.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" data-aos="fade-up">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <h3>Library Management System (Java)</h3>
+            <p>A fully functional library management system built using Java, providing features like book search, issue/return management, and user registration.</p>
+        </div>
+        <div class="project-card">
+            <h3>Image to Image Translation (GANs)</h3>
+            <p>An Image-to-Image translation project using Generative Adversarial Networks (GANs) to convert images from one style to another.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-left">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out for any collaboration or questions!</p>
+        <form action="https://formspree.io/f/manonozk" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Cyril. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/cyril" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/cyril-sigmond-3a5314287" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        var typed = new Typed('#typed', {
+            strings: ["Hi, I'm Cyril 👋", "Aspiring Web Developer", "Creative Problem Solver"],
+            typeSpeed: 60,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '☀️';
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                themeToggle.innerHTML = '🌙';
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        });
+        // Get the scroll to top button
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+// When the user scrolls down 100px from the top of the document, show the button
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// When the user clicks on the button, scroll to the top of the document
+scrollToTopBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+themeToggle.innerHTML = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+
+    </script>
+
+    <!-- Scroll to top Button -->
+    <button id="scrollToTopBtn" title="Go to top">⬆TOP</button>
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" aria-label="Toggle Theme">🌙</button>
+
+</body>
+</html>
